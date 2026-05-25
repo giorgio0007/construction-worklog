@@ -3,14 +3,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const workTypes = [
-  'Монтаж опалубки',
   'Кладка перегородок',
-  'Армирование',
-  'Заливка бетона',
-  'Монтаж перекрытий',
-  'Штукатурные работы',
-  'Монтаж кровли',
-  'Укладка плитки',
+  'Монтаж опалубки',
+  'Бетонирование',
+  'Электромонтаж',
 ];
 
 async function main() {
@@ -36,7 +32,7 @@ async function main() {
 
   const demoLogs = [
     {
-      date: new Date('2026-05-23'),
+      date: new Date('2026-05-24'),
       workTypeId: byName['Монтаж опалубки'],
       volume: 48,
       unit: 'м²',
@@ -44,52 +40,20 @@ async function main() {
       comment: 'Секция А, 2-й этаж',
     },
     {
-      date: new Date('2026-05-23'),
-      workTypeId: byName['Армирование'],
-      volume: 1.2,
-      unit: 'т',
-      workerName: 'Сидоров В.И.',
-      comment: 'Фундаментная плита',
-    },
-    {
-      date: new Date('2026-05-24'),
-      workTypeId: byName['Заливка бетона'],
+      date: new Date('2026-05-25'),
+      workTypeId: byName['Бетонирование'],
       volume: 18,
       unit: 'м³',
       workerName: 'Иванов Е.Ф.',
       comment: 'Секция Б',
     },
     {
-      date: new Date('2026-05-24'),
-      workTypeId: byName['Кладка перегородок'],
-      volume: 32,
-      unit: 'м²',
-      workerName: 'Козлов Д.М.',
-      comment: 'Коридор, 3-й этаж',
-    },
-    {
       date: new Date('2026-05-25'),
-      workTypeId: byName['Монтаж перекрытий'],
-      volume: 6,
-      unit: 'шт.',
-      workerName: 'Петров А.С.',
-      comment: null,
-    },
-    {
-      date: new Date('2026-05-25'),
-      workTypeId: byName['Штукатурные работы'],
-      volume: 56,
-      unit: 'м²',
-      workerName: 'Новикова О.П.',
-      comment: 'Подготовка под покраску',
-    },
-    {
-      date: new Date('2026-05-26'),
-      workTypeId: byName['Монтаж опалубки'],
-      volume: 29,
-      unit: 'м³',
-      workerName: 'Иванов Е.Ф.',
-      comment: 'Секция А',
+      workTypeId: byName['Электромонтаж'],
+      volume: 120,
+      unit: 'м',
+      workerName: 'Сидоров В.И.',
+      comment: 'Магистральный щит',
     },
   ];
 
