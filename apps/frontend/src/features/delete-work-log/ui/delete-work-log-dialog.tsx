@@ -23,8 +23,12 @@ export const DeleteWorkLogDialog = ({ id }: { id: string }) => {
     <AlertDialog>
       <AlertDialogTrigger
         render={
-          <Button variant="destructive" size="icon">
-            <Trash2 className="h-4 w-4" />
+          <Button
+            variant="destructive"
+            size="icon-sm"
+            aria-label="Удалить запись"
+          >
+            <Trash2 aria-hidden />
           </Button>
         }
       />
@@ -34,14 +38,19 @@ export const DeleteWorkLogDialog = ({ id }: { id: string }) => {
           <AlertDialogTitle>Удалить запись?</AlertDialogTitle>
 
           <AlertDialogDescription>
-            Это действие нельзя отменить.
+            Это действие нельзя отменить. Запись будет удалена из журнала
+            навсегда.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
         <AlertDialogFooter>
           <AlertDialogCancel>Отмена</AlertDialogCancel>
 
-          <AlertDialogAction onClick={() => deleteWorkLog.mutate(id)}>
+          <AlertDialogAction
+            variant="destructive"
+            disabled={deleteWorkLog.isPending}
+            onClick={() => deleteWorkLog.mutate(id)}
+          >
             {deleteWorkLog.isPending ? 'Удаление...' : 'Удалить'}
           </AlertDialogAction>
         </AlertDialogFooter>

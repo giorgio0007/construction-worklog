@@ -23,8 +23,12 @@ export const UpdateWorkLogDialog = ({ workLog }: { workLog: WorkLog }) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         render={
-          <Button variant="outline" size="icon">
-            <Pencil className="h-4 w-4" />
+          <Button
+            variant="outline"
+            size="icon-sm"
+            aria-label="Редактировать запись"
+          >
+            <Pencil aria-hidden />
           </Button>
         }
       />

@@ -7,8 +7,13 @@ export const WorkLogsPage = () => {
   return (
     <Layout>
       <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Записи</h2>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900">Записи</h2>
+            <p className="mt-1 text-sm text-slate-600">
+              Список выполненных работ на объекте
+            </p>
+          </div>
 
           <CreateWorkLogDialog />
         </div>

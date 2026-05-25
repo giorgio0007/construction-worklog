@@ -11,6 +11,6 @@ COPY . .
 
 RUN npx prisma generate
 
-EXPOSE 3000
+EXPOSE 3003
 
 ENTRYPOINT ["sh", "docker-entrypoint.sh"]

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Plus } from 'lucide-react';
 
 import {
   Dialog,
@@ -17,7 +18,14 @@ export const CreateWorkLogDialog = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<Button>Добавить запись</Button>} />
+      <DialogTrigger
+        render={
+          <Button className="w-full sm:w-auto">
+            <Plus aria-hidden />
+            Добавить запись
+          </Button>
+        }
+      />
 
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>

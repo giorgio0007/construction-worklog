@@ -12,9 +12,9 @@ docker compose up --build
 
 После сборки и запуска контейнеров:
 
-- **Приложение:** http://localhost:5173
-- **API:** http://localhost:3000/api
-- **Swagger:** http://localhost:3000/docs
+- **Приложение:** http://localhost:5174
+- **API:** http://localhost:3003/api
+- **Swagger:** http://localhost:3003/docs
 
 В базе уже будут demo-данные: 4 вида работ и 3 записи журнала.
 
@@ -24,11 +24,11 @@ docker compose up --build
 
 **Сервисы:**
 
-| Сервис   | Образ / сборка     | Порт                |
-| -------- | ------------------ | ------------------- |
-| postgres | postgres:16-alpine | — (внутренняя сеть) |
-| backend  | apps/backend       | 3000                |
-| frontend | apps/frontend      | 5173                |
+| Сервис   | Образ / сборка     | Порт  |
+| -------- | ------------------ | ----- |
+| postgres | postgres:16-alpine | 5435  |
+| backend  | apps/backend       | 3003  |
+| frontend | apps/frontend      | 5174  |
 
 **Что происходит при старте backend:**
 
@@ -37,7 +37,7 @@ docker compose up --build
 3. `prisma db seed` — наполнение справочника и demo-записей
 4. `npm run start:dev` — запуск NestJS
 
-**Frontend** стартует через Vite с `--host 0.0.0.0`, чтобы был доступен с хост-машины.
+**Frontend** стартует через Vite на порту 5174 с `host: true`, чтобы был доступен с хост-машины.
 
 Переменные окружения для Docker задаются в `docker-compose.yml`. Пример для локальной разработки без Docker — в `.env.example` (корень) и `apps/*/.env.example`.
 
@@ -48,7 +48,7 @@ docker compose up --build
 │   Browser   │ ────────────► │   Backend   │ ───────────► │  PostgreSQL │
 │  (React)    │ ◄──────────── │  (NestJS)   │ ◄─────────── │             │
 └─────────────┘               └─────────────┘              └─────────────┘
-   :5173                          :3000
+   :5174                          :3003                         :5435
 ```
 
 - **Frontend** — React SPA, ходит в REST API
@@ -95,6 +95,8 @@ docker compose up --build
 ## Заметки
 
 JWT-авторизация намеренно не добавлялась: в требованиях тестового задания её не было, а для текущего объёма это привело бы к избыточному усложнению решения.
+
+Порты 3003 / 5174 / 5435 выбраны намеренно — стандартные 3000 и 5173 часто заняты локальными dev-серверами или зависшими Docker-процессами.
 
 ## Локальный запуск без Docker
 

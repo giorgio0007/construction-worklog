@@ -13,4 +13,5 @@ echo "Seeding database..."
 npx prisma db seed
 
 echo "Starting backend..."
+rm -rf dist 2>/dev/null || true
 exec npm run start:dev

@@ -30,14 +30,14 @@ async function bootstrap() {
 
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3003);
 
   console.log(
-    `🚀 Server running on http://localhost:${process.env.PORT ?? 3000}`,
+    `🚀 Server running on http://localhost:${process.env.PORT ?? 3003}`,
   );
 
   console.log(
-    `📚 Swagger running on http://localhost:${process.env.PORT ?? 3000}/docs`,
+    `📚 Swagger running on http://localhost:${process.env.PORT ?? 3003}/docs`,
   );
 }
 

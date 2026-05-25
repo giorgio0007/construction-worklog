@@ -1,16 +1,18 @@
-import { FileText } from 'lucide-react';
+import { ClipboardList } from 'lucide-react';
 
 export const WorkLogsEmpty = () => {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed p-12 text-center">
+    <div className="flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-16 text-center shadow-sm">
       <div className="rounded-full bg-slate-100 p-4">
-        <FileText className="h-8 w-8 text-slate-500" />
+        <ClipboardList className="size-8 text-slate-600" aria-hidden />
       </div>
 
-      <h3 className="mt-4 text-lg font-semibold">Нет записей</h3>
+      <h3 className="mt-5 text-lg font-semibold text-slate-900">
+        Записей пока нет
+      </h3>
 
-      <p className="mt-2 text-sm text-slate-500">
-        Добавьте первую запись о выполненных работах
+      <p className="mt-2 max-w-sm text-sm text-slate-600">
+        Добавьте первую запись о выполненных работах на объекте
       </p>
     </div>
   );
