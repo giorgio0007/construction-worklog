@@ -16,19 +16,17 @@ docker compose up --build
 - **API:** http://localhost:3003/api
 - **Swagger:** http://localhost:3003/docs
 
-В базе уже будут demo-данные: 4 вида работ и 3 записи журнала.
-
 ## Docker setup
 
 Проект поднимается одной командой — `docker compose up --build`.
 
 **Сервисы:**
 
-| Сервис   | Образ / сборка     | Порт  |
-| -------- | ------------------ | ----- |
-| postgres | postgres:16-alpine | 5435  |
-| backend  | apps/backend       | 3003  |
-| frontend | apps/frontend      | 5174  |
+| Сервис   | Образ / сборка     | Порт |
+| -------- | ------------------ | ---- |
+| postgres | postgres:16-alpine | 5435 |
+| backend  | apps/backend       | 3003 |
+| frontend | apps/frontend      | 5174 |
 
 **Что происходит при старте backend:**
 
@@ -37,19 +35,7 @@ docker compose up --build
 3. `prisma db seed` — наполнение справочника и demo-записей
 4. `npm run start:dev` — запуск NestJS
 
-**Frontend** стартует через Vite на порту 5174 с `host: true`, чтобы был доступен с хост-машины.
-
 Переменные окружения для Docker задаются в `docker-compose.yml`. Пример для локальной разработки без Docker — в `.env.example` (корень) и `apps/*/.env.example`.
-
-## Архитектура
-
-```
-┌─────────────┐     HTTP      ┌─────────────┐     SQL      ┌─────────────┐
-│   Browser   │ ────────────► │   Backend   │ ───────────► │  PostgreSQL │
-│  (React)    │ ◄──────────── │  (NestJS)   │ ◄─────────── │             │
-└─────────────┘               └─────────────┘              └─────────────┘
-   :5174                          :3003                         :5435
-```
 
 - **Frontend** — React SPA, ходит в REST API
 - **Backend** — NestJS, валидация DTO, Swagger
