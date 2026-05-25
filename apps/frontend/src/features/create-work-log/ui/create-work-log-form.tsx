@@ -138,7 +138,11 @@ export const CreateWorkLogForm = ({ initialData, onSuccess }: Props) => {
           name="workTypeId"
           control={control}
           render={({ field }) => (
-            <Select value={field.value} onValueChange={field.onChange}>
+            <Select
+              value={field.value}
+              items={workTypes.map((wt) => ({ value: wt.id, label: wt.name }))}
+              onValueChange={field.onChange}
+            >
               <SelectTrigger
                 id="workTypeId"
                 className="w-full"

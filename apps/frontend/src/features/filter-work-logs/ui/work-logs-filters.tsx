@@ -12,6 +12,11 @@ import {
 
 import { useWorkLogsFilterStore } from '../model/store';
 
+const SORT_ITEMS = [
+  { value: 'desc', label: 'Сначала новые' },
+  { value: 'asc', label: 'Сначала старые' },
+] as const;
+
 export const WorkLogsFilters = () => {
   const { selectedDate, sortOrder, setSelectedDate, setSortOrder } =
     useWorkLogsFilterStore();
@@ -37,10 +42,11 @@ export const WorkLogsFilters = () => {
           <Label htmlFor="filter-sort">Сортировка</Label>
           <Select
             value={sortOrder}
+            items={[...SORT_ITEMS]}
             onValueChange={(value) => setSortOrder(value as 'asc' | 'desc')}
           >
             <SelectTrigger id="filter-sort" className="w-full">
-              <SelectValue />
+              <SelectValue placeholder="Сортировка" />
             </SelectTrigger>
 
             <SelectContent>
