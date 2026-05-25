@@ -4,31 +4,32 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model WorkType {
-  id        String    @id @default(uuid())
-  name      String    @unique
+  id       String    @id @default(uuid())
+  name     String    @unique
 
-  workLogs  WorkLog[]
+  workLogs WorkLog[]
 }
 
 model WorkLog {
-  id          String    @id @default(uuid())
+  id         String   @id @default(uuid())
 
-  date        DateTime
+  date       DateTime
 
-  volume      Decimal
+  volume     Decimal
 
-  unit        String
+  unit       String
 
-  workerName  String
+  workerName String
 
-  comment     String?
+  comment    String?
 
-  workTypeId  String
-  workType    WorkType  @relation(fields: [workTypeId], references: [id])
+  workTypeId String
+  workType   WorkType @relation(fields: [workTypeId], references: [id])
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
